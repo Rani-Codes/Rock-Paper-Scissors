@@ -4,7 +4,8 @@ function getPlayerChoice() {
     if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
         return playerChoice;
     } else {
-        getPlayerChoice();
+        playerChoice = getPlayerChoice();
+        return playerChoice;
     }
 }
 
@@ -25,11 +26,12 @@ function getComputerChoice() {
     return choice;
 }
 
-//Function that plays one round and determines a winner 
 //Include PlayerChoice and ComputerChoice as parameters
 getComputerChoice();
-const computerChoice = getComputerChoice();
-const playerChoice = getPlayerChoice();
+let computerChoice = getComputerChoice();
+let playerChoice = getPlayerChoice();
+
+//Function that plays one round and determines a winner 
 function playRound(playerChoice, computerChoice) {
     let result;
     //All choices if player chooses rock
@@ -37,11 +39,43 @@ function playRound(playerChoice, computerChoice) {
         result = "winner";
     }else if(playerChoice === "rock" && computerChoice === "paper") {
         result = "loser";
-    }else {
+    }else if (playerChoice === "rock" && computerChoice === "rock") {
         result = "tie";
     }
-    return console.log(result);
+    //All choices if player chooses paper
+    if(playerChoice === "paper" && computerChoice === "rock") {
+        result = "winner";
+    }else if(playerChoice === "paper" && computerChoice === "scissors") {
+        result = "loser";
+    }else if (playerChoice === "paper" && computerChoice === "paper") {
+        result = "tie";
+    }
+    //All choices if player chooses scissors
+    if(playerChoice === "scissors" && computerChoice === "paper") {
+        result = "winner";
+    }else if(playerChoice === "scissors" && computerChoice === "rock") {
+        result = "loser";
+    }else if (playerChoice === "scissors" && computerChoice === "scissors") {
+        result = "tie";
+    }
+    //Results printed out based on game outcome
+    if(result === "winner") {
+        console.log(`You are the winner, ${playerChoice} beats ${computerChoice}!!`);
+    } else if(result === "loser") {
+        console.log(`You lost, ${playerChoice} is defeated by ${computerChoice}.`);
+    } else if(result === "tie") {
+        console.log(`It's a tie, you both chose ${playerChoice} so nobody won.`);
+    }
 }
 
-console.log(playRound(playerChoice, computerChoice));
 
+function game() {
+    for (let i = 0; i < 5; i++) {
+        computerChoice = getComputerChoice();
+        playerChoice = getPlayerChoice();
+        playRound(playerChoice, computerChoice);
+        console.log(" ");
+    }
+}
+
+game();
