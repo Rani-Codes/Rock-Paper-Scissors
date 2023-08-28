@@ -79,3 +79,12 @@ function game() {
 }
 
 game();
+
+
+/*Problems to address:
+1. game() is printing out too many iterations of playRound
+    -Need to find a way to have it take new player and computer inputs 
+    -without getting a second output
+2. get result variable or equivalent to keep track of who is winning out 
+   of these 5 matches and then determine final score.
+*/
