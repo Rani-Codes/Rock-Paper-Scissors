@@ -31,9 +31,31 @@ getComputerChoice();
 let computerChoice = getComputerChoice();
 let playerChoice = getPlayerChoice();
 
+let result;
+let playerScore = 0;
+let computerScore = 0;
+function calcWinner() {
+    if(result === "winner") {
+        playerScore++;
+    } else if(result === "loser") {
+        computerScore++;
+    }
+}
+
+function getWinner(playerPoints, computerPoints) {
+    playerPoints = playerScore;
+    computerPoints = computerScore;
+    if(playerPoints > computerPoints) {
+        console.log("You beat the computer in a best of five!");
+    } else if(playerPoints < computerPoints) {
+        console.log("You have lost in this best of five game against the computer");
+    } else {
+        console.log("You and the computer have reached a tie.");
+    }
+}
+
 //Function that plays one round and determines a winner 
 function playRound(playerChoice, computerChoice) {
-    let result;
     //All choices if player chooses rock
     if(playerChoice === "rock" && computerChoice === "scissors") {
         result = "winner";
@@ -71,20 +93,18 @@ function playRound(playerChoice, computerChoice) {
 
 function game() {
     for (let i = 0; i < 5; i++) {
-        computerChoice = getComputerChoice();
-        playerChoice = getPlayerChoice();
         playRound(playerChoice, computerChoice);
-        console.log(" ");
+        calcWinner()
+        //Created to address the additional inputs being asked when not needed
+        if(i < 4) {
+            computerChoice = getComputerChoice();
+            playerChoice = getPlayerChoice();
+        } else {
+            break;
+        }
     }
+    console.log("\n") 
+    getWinner();
 }
 
 game();
-
-
-/*Problems to address:
-1. game() is printing out too many iterations of playRound
-    -Need to find a way to have it take new player and computer inputs 
-    -without getting a second output
-2. get result variable or equivalent to keep track of who is winning out 
-   of these 5 matches and then determine final score.
-*/
