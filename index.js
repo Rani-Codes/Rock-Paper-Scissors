@@ -25,9 +25,6 @@ scissorsBtn.addEventListener('click', () => {
     return playRound(playerChoice, computerChoice);
 });
 
-
-
-
 //Create a function that gets the computer's choice
 //Make sure it's randomly returning either Rock, Paper or Scissors.
 function getComputerChoice() {
@@ -79,25 +76,8 @@ function playRound(playerChoice, computerChoice) {
     } else if(result === "tie") {
         h2Results.textContent = `It's a tie, you both chose ${playerChoice} so nobody won.`
     }
-
     calcWinner();
 }
-
-// function game() {
-//     for (let i = 0; i < 5; i++) {
-//         playRound(playerChoice, computerChoice);
-//         calcWinner()
-//         //Created to address the additional inputs being asked when not needed
-//         if(i < 4) {
-//             computerChoice = getComputerChoice();
-//             playerChoice = getPlayerChoice();
-//         } else {
-//             break;
-//         }
-//     }
-//     console.log("\n") 
-//     getWinner();
-// }
 
 let result;
 let playerScore = 0;
@@ -123,9 +103,6 @@ function calcWinner() {
         h3FinalScore.textContent = "You beat the computer in a best of five!"
     }
 }
-
-
-// game();
 
 const h2Results = document.createElement('h2');
 roundResults.appendChild(h2Results);
