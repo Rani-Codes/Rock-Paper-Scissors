@@ -7,10 +7,54 @@
 </head>
 <body>
     <h1 style="text-align: center;">Rock Paper Scissors</h1>
-    <div>
-        <button class="rockBtn">Rock</button>
+    <div class="btnsDiv">
+        <button src="" class="rockBtn">Rock</button>
         <button class="paperBtn">Paper</button>
         <button class="scissorsBtn">Scissors</button>
     </div>
+    <div class="results">
+        <div class="roundResults">
+        </div>
+        <div class = "scoreResults">
+        </div>
+    </div>
+    </div>
+
+    <style>
+        body {
+            background-color: olive;
+            color: white;
+        }
+        .results {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: tan;
+            padding: 25px;
+        }
+        .btnsDiv {
+            display: flex;
+            justify-content: center;
+            gap: 10%;
+            align-items: center;
+            margin: 50px 0px;
+        }
+        button {
+            padding: 25px;
+            font-size: 20px;
+            border-radius: 12px;
+            background-color: tan;
+            color: white;
+            border: 0;
+        }
+        .scoreResults {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 100px;
+        }
+
+    </style>
 </body>
 </html>

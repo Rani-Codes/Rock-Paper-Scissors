@@ -4,6 +4,10 @@ let computerChoice = getComputerChoice();
 const rockBtn = document.querySelector('.rockBtn');
 const paperBtn = document.querySelector('.paperBtn');
 const scissorsBtn = document.querySelector('.scissorsBtn');
+const results = document.querySelector('.results');
+const roundResults = document.querySelector('.roundResults');
+const scoreResults = document.querySelector('.scoreResults');
+
 
 rockBtn.addEventListener('click', () => {
     playerChoice = "rock";
@@ -67,11 +71,11 @@ function playRound(playerChoice, computerChoice) {
     }
     //Results printed out based on game outcome
     if(result === "winner") {
-        console.log(`You are the winner, ${playerChoice} beats ${computerChoice}!!`);
+        h2Results.textContent = `You are the winner, ${playerChoice} beats ${computerChoice}!!`
     } else if(result === "loser") {
-        console.log(`You lost, ${playerChoice} is defeated by ${computerChoice}.`);
+        h2Results.textContent = `You lost, ${playerChoice} is defeated by ${computerChoice}.`
     } else if(result === "tie") {
-        console.log(`It's a tie, you both chose ${playerChoice} so nobody won.`);
+        h2Results.textContent = `It's a tie, you both chose ${playerChoice} so nobody won.`
     }
 }
 
@@ -95,13 +99,14 @@ let result;
 let playerScore = 0;
 let computerScore = 0;
 
-// function calcWinner() {
-//     if(result === "winner") {
-//         playerScore++;
-//     } else if(result === "loser") {
-//         computerScore++;
-//     }
-// }
+function calcWinner() {
+    if(result === "winner") {
+        playerScore++;
+        h4playerScore.textContent = `Player Score = ${playerScore}`
+    } else if(result === "loser") {
+        computerScore++;
+    }
+}
 
 // function getWinner(playerPoints, computerPoints) {
 //     playerPoints = playerScore;
@@ -117,3 +122,17 @@ let computerScore = 0;
 
 
 // game();
+
+const h2Results = document.createElement('h2');
+roundResults.appendChild(h2Results);
+
+const h4playerScore = document.createElement('h4');
+h4playerScore.textContent = `Player's Score: ${playerScore}`
+scoreResults.append(h4playerScore);
+
+const h4CompScore = document.createElement('h4');
+h4CompScore.textContent = `Computer's Score: ${computerScore}`
+scoreResults.append(h4CompScore);
+
+
+
