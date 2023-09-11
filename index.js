@@ -26,6 +26,8 @@ scissorsBtn.addEventListener('click', () => {
 });
 
 
+
+
 //Create a function that gets the computer's choice
 //Make sure it's randomly returning either Rock, Paper or Scissors.
 function getComputerChoice() {
@@ -77,6 +79,8 @@ function playRound(playerChoice, computerChoice) {
     } else if(result === "tie") {
         h2Results.textContent = `It's a tie, you both chose ${playerChoice} so nobody won.`
     }
+
+    calcWinner();
 }
 
 // function game() {
@@ -102,23 +106,23 @@ let computerScore = 0;
 function calcWinner() {
     if(result === "winner") {
         playerScore++;
-        h4playerScore.textContent = `Player Score = ${playerScore}`
+        h3playerScore.textContent = `Player's Score: ${playerScore}`
     } else if(result === "loser") {
         computerScore++;
+        h3CompScore.textContent = `Computer's Score: ${computerScore}`
+    }
+    if(playerScore > 5 || computerScore > 5) {
+        location.reload();
+    }
+
+    if(playerScore === 5 && computerScore === 5) {
+        h3FinalScore.textContent = "You and the computer have reached a tie."
+    } else if(computerScore === 5) {
+        h3FinalScore.textContent = "You have lost in this best of five game against the computer"
+    } else if (playerScore === 5) {
+        h3FinalScore.textContent = "You beat the computer in a best of five!"
     }
 }
-
-// function getWinner(playerPoints, computerPoints) {
-//     playerPoints = playerScore;
-//     computerPoints = computerScore;
-//     if(playerPoints > computerPoints) {
-//         console.log("You beat the computer in a best of five!");
-//     } else if(playerPoints < computerPoints) {
-//         console.log("You have lost in this best of five game against the computer");
-//     } else {
-//         console.log("You and the computer have reached a tie.");
-//     }
-// }
 
 
 // game();
@@ -126,13 +130,13 @@ function calcWinner() {
 const h2Results = document.createElement('h2');
 roundResults.appendChild(h2Results);
 
-const h4playerScore = document.createElement('h4');
-h4playerScore.textContent = `Player's Score: ${playerScore}`
-scoreResults.append(h4playerScore);
+const h3playerScore = document.createElement('h3');
+scoreResults.append(h3playerScore);
 
-const h4CompScore = document.createElement('h4');
-h4CompScore.textContent = `Computer's Score: ${computerScore}`
-scoreResults.append(h4CompScore);
+const h3CompScore = document.createElement('h3');
+scoreResults.append(h3CompScore);
 
+const h3FinalScore = document.createElement('h3');
+results.appendChild(h3FinalScore);
 
 
