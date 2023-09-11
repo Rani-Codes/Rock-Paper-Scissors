@@ -1,13 +1,23 @@
-function getPlayerChoice() {
-    let playerChoice = prompt("Will you choose Rock, Paper, or Scissors? ", "Rock");
-    playerChoice = playerChoice.toLowerCase();
-    if (playerChoice === "rock" || playerChoice === "paper" || playerChoice === "scissors") {
-        return playerChoice;
-    } else {
-        playerChoice = getPlayerChoice();
-        return playerChoice;
-    }
-}
+let playerChoice;
+let computerChoice = getComputerChoice();
+
+const rockBtn = document.querySelector('.rockBtn');
+const paperBtn = document.querySelector('.paperBtn');
+const scissorsBtn = document.querySelector('.scissorsBtn');
+
+rockBtn.addEventListener('click', () => {
+    playerChoice = "rock";
+    return playRound(playerChoice, computerChoice);
+});
+paperBtn.addEventListener('click', () => {
+    playerChoice = "paper";
+    return playRound(playerChoice, computerChoice);
+});
+scissorsBtn.addEventListener('click', () => {
+    playerChoice = "scissors";
+    return playRound(playerChoice, computerChoice);
+});
+
 
 //Create a function that gets the computer's choice
 //Make sure it's randomly returning either Rock, Paper or Scissors.
@@ -27,32 +37,30 @@ function getComputerChoice() {
 }
 
 //Include PlayerChoice and ComputerChoice as parameters
-getComputerChoice();
-let computerChoice = getComputerChoice();
-let playerChoice = getPlayerChoice();
 
 let result;
 let playerScore = 0;
 let computerScore = 0;
-function calcWinner() {
-    if(result === "winner") {
-        playerScore++;
-    } else if(result === "loser") {
-        computerScore++;
-    }
-}
 
-function getWinner(playerPoints, computerPoints) {
-    playerPoints = playerScore;
-    computerPoints = computerScore;
-    if(playerPoints > computerPoints) {
-        console.log("You beat the computer in a best of five!");
-    } else if(playerPoints < computerPoints) {
-        console.log("You have lost in this best of five game against the computer");
-    } else {
-        console.log("You and the computer have reached a tie.");
-    }
-}
+// function calcWinner() {
+//     if(result === "winner") {
+//         playerScore++;
+//     } else if(result === "loser") {
+//         computerScore++;
+//     }
+// }
+
+// function getWinner(playerPoints, computerPoints) {
+//     playerPoints = playerScore;
+//     computerPoints = computerScore;
+//     if(playerPoints > computerPoints) {
+//         console.log("You beat the computer in a best of five!");
+//     } else if(playerPoints < computerPoints) {
+//         console.log("You have lost in this best of five game against the computer");
+//     } else {
+//         console.log("You and the computer have reached a tie.");
+//     }
+// }
 
 //Function that plays one round and determines a winner 
 function playRound(playerChoice, computerChoice) {
@@ -91,20 +99,22 @@ function playRound(playerChoice, computerChoice) {
 }
 
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        playRound(playerChoice, computerChoice);
-        calcWinner()
-        //Created to address the additional inputs being asked when not needed
-        if(i < 4) {
-            computerChoice = getComputerChoice();
-            playerChoice = getPlayerChoice();
-        } else {
-            break;
-        }
-    }
-    console.log("\n") 
-    getWinner();
-}
+playRound(playerChoice, computerChoice);
 
-game();
+// function game() {
+//     for (let i = 0; i < 5; i++) {
+//         playRound(playerChoice, computerChoice);
+//         calcWinner()
+//         //Created to address the additional inputs being asked when not needed
+//         if(i < 4) {
+//             computerChoice = getComputerChoice();
+//             playerChoice = getPlayerChoice();
+//         } else {
+//             break;
+//         }
+//     }
+//     console.log("\n") 
+//     getWinner();
+// }
+
+// game();
